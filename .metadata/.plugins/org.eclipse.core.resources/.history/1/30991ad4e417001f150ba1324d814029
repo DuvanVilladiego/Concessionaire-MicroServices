@@ -1,7 +1,0 @@
-package com.formacionbdi.springboot.app.test.concessionarie.service.impl;
-
-import com.formacionbdi.springboot.app.test.concessionarie.service.ConcessionarieService;
-
-public class ConcessionarieServiceImpl implements ConcessionarieService {
-
-}

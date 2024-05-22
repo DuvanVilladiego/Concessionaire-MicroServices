@@ -1,5 +1,0 @@
-package com.formacionbdi.springboot.app.test.car.dto;
-
-public class Car {
-
-}

@@ -1,9 +1,0 @@
-package com.formacionbdi.springboot.app.test.concessionarie.controller;
-
-public interface ConcessionarieController {
-
-	public GeneralResponse<> getAllConcessionarie();
-	
-	public GeneralResponse getConcessionarieById(Long id, Long cantidad);
-	
-}

@@ -1,8 +1,0 @@
-package com.formacionbdi.springboot.app.test.car.dto;
-
-public class ResponseDto<T> {
-
-	private Boolean status;
-	private String message;
-	private T data;
-}

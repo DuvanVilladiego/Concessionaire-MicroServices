@@ -1,5 +1,0 @@
-package com.formacionbdi.springboot.app.test.car.controller.impl;
-
-public class CarControllerImpl {
-
-}

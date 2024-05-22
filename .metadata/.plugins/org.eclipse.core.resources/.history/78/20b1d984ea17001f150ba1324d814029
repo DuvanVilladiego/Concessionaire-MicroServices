@@ -1,8 +1,0 @@
-package com.formacionbdi.springboot.app.test.concessionarie.clients;
-
-import org.springframework.cloud.openfeign.FeignClient;
-
-@FeignClient(name = "test-car-service")
-public interface CarClientRest {
-
-}
