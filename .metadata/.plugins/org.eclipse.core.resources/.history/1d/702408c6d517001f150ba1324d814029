@@ -1,0 +1,40 @@
+package com.formacionbdi.springboot.app.test.querylog.listeners;
+
+import org.springframework.jms.annotation.JmsListener;
+import org.springframework.stereotype.Component;
+
+import jakarta.jms.Connection;
+import jakarta.jms.JMSException;
+import jakarta.jms.MessageConsumer;
+import jakarta.jms.Session;
+import jakarta.jms.TextMessage;
+import jakarta.jms.Topic;
+
+import org.apache.activemq.ActiveMQConnection;
+import org.apache.activemq.ActiveMQConnectionFactory;
+
+
+@Component
+public class MessageListener {
+    private static String BROKERURL = "tcp://localhost:8161";
+    private static String TOPIC = "cars-query-logs";
+
+    public void main(TextMessage textMessage) throws JMSException {
+    	start();
+    }
+    
+    public static void start() throws JMSException {
+
+        ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory(
+        ActiveMQConnection.DEFAULT_USER, ActiveMQConnection.DEFAULT_PASSWORD, BROKERURL);
+        Connection connection = activeMQConnectionFactory.createConnection();
+        connection.start();
+        Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+        // 创建一个队列
+        Topic topic = session.createTopic(TOPIC);
+        MessageConsumer consumer = session.createConsumer(topic);
+        TextMessage textMessage = (TextMessage) consumer.receive();
+        System.out.println(textMessage.getText());
+        connection.close();
+    }
+}

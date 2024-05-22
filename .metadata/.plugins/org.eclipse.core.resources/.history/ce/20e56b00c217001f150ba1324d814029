@@ -1,0 +1,27 @@
+package com.formacionbdi.springboot.app.test.car.dto;
+
+public class Car {
+
+	private Long id;
+	private String nombre;
+	private Double precio;
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getName() {
+		return nombre;
+	}
+	public void setName(String name) {
+		this.nombre = name;
+	}
+	public Double getPrecio() {
+		return precio;
+	}
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
+}

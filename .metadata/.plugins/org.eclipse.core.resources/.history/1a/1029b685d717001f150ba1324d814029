@@ -1,0 +1,5 @@
+package com.formacionbdi.springboot.app.test.car.utils;
+
+public class Constants {
+
+}

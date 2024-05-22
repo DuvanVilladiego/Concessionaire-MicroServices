@@ -1,0 +1,26 @@
+package com.formacionbdi.springboot.app.test.querylog.listeners;
+
+import org.springframework.jms.annotation.JmsListener;
+import org.springframework.stereotype.Component;
+
+import com.formacionbdi.springboot.app.test.querylog.utils.Constants;
+
+import jakarta.jms.Connection;
+import jakarta.jms.JMSException;
+import jakarta.jms.MessageConsumer;
+import jakarta.jms.Session;
+import jakarta.jms.TextMessage;
+import jakarta.jms.Topic;
+
+import org.apache.activemq.ActiveMQConnection;
+import org.apache.activemq.ActiveMQConnectionFactory;
+
+
+@Component
+public class MessageListener {
+
+    @JmsListener(destination = "query-cars-log")
+    public void receiveMessage(String message) {
+        System.out.println("Received message: " + message);
+    }
+}

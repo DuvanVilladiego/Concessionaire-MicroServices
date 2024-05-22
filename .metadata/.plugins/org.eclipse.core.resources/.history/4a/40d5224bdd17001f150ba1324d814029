@@ -1,0 +1,24 @@
+package com.formacionbdi.springboot.app.test.car;
+
+import javax.ws.rs.core.Application;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.jms.core.JmsTemplate;
+
+@SpringBootApplication
+public class SpringbootTestCarApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringbootTestCarApplication.class, args);
+	    ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+
+	    JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
+
+	    // Send a message with a POJO - the template reuse the message converter
+	    System.out.println("Sending an email message.");
+	    jmsTemplate.convertAndSend("mailbox",  "dsdsds");
+	}
+
+}

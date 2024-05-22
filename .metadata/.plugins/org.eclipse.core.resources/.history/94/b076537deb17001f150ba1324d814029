@@ -1,0 +1,11 @@
+package com.formacionbdi.springboot.app.test.concessionarie.service;
+
+import java.util.List;
+
+import com.formacionbdi.springboot.app.test.concessionarie.dto.ConcessionarieDto;
+
+public interface ConcessionarieService {
+
+	List<ConcessionarieDto> getAll();
+	ConcessionarieDto getById(Long id, Long amount);
+}

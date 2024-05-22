@@ -1,0 +1,2 @@
+spring.application.name=servicio-eureka-server
+server.port=8761

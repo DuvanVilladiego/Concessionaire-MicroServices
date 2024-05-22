@@ -1,0 +1,18 @@
+package com.formacionbdi.springboot.app.test.querylog.listeners;
+
+import org.springframework.jms.annotation.JmsListener;
+import org.springframework.stereotype.Component;
+
+import jakarta.jms.TextMessage;
+
+@Component
+public class MessageListener {
+
+    public void main(TextMessage textMessage) throws JMSException {
+    	start();
+    }
+    
+    public static void start() throws JMSException {
+    	
+    }
+}

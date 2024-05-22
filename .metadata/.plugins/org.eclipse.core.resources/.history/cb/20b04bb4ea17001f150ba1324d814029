@@ -1,0 +1,20 @@
+package com.formacionbdi.springboot.app.test.concessionarie.clients;
+
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+import com.formacionbdi.springboot.app.test.concessionarie.dto.CarDto;
+import com.formacionbdi.springboot.app.test.concessionarie.dto.ResponseDto;
+
+
+@FeignClient(name = "test-car-service")
+public interface CarClientRest {
+
+	@GetMapping
+	public ResponseDto<List<CarDto>> getAllCars();
+
+	@GetMapping("/{id}")
+	public ResponseDto<CarDto> getCarById(Long id);
+
+}

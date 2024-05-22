@@ -1,0 +1,31 @@
+package com.formacionbdi.springboot.app.test.car.services.impl;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.formacionbdi.springboot.app.test.car.dto.CarDto;
+import com.formacionbdi.springboot.app.test.car.repository.CarRepository;
+import com.formacionbdi.springboot.app.test.car.service.CarService;
+
+@Service
+public class CarServiceImpl implements CarService {
+
+	@Autowired
+	private CarRepository repository;
+	
+	@Override
+	public List<CarDto> getAll() {
+	    return repository.findAll().stream()
+	                     .map(p -> new CarDto().EntityToDto(p))
+	                     .collect(Collectors.toList());
+	}
+
+	@Override
+	public CarDto getCarById(Long id) {
+		return new CarDto().EntityToDto(repository.findById(id).get());
+	}
+
+}

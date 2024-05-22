@@ -5,7 +5,7 @@ public class Constants {
 	public static final String CAR_QUEUE = "CARS_QUERY_LOGS";
 	
 	/*MESSAGES*/
-	public static final String SUCCES_QUERY = "SUCCES QUERY";
+	public static final String SUCCES_QUERY = "SUCCESS QUERY";
 	public static final String ERROR_QUERY = "ERROR QUERY";
 	
 }

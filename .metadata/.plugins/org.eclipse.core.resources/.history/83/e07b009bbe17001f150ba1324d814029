@@ -1,0 +1,5 @@
+package com.formacionbdi.springboot.app.jms.configuration;
+
+public class JmsConfig {
+
+}

@@ -1,0 +1,28 @@
+package com.formacionbdi.springboot.app.test.concessionarie.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.formacionbdi.springboot.app.test.concessionarie.dto.ConcessionarieDto;
+import com.formacionbdi.springboot.app.test.concessionarie.service.ConcessionarieService;
+import com.formacionbdi.springboot.app.test.concessionarie.service.JmsService;
+
+public class ConcessionarieServiceImpl implements ConcessionarieService {
+
+	@Autowired
+	private JmsService jmsService;
+	
+	@Override
+	public List<ConcessionarieDto> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ConcessionarieDto getById(Long id, Long amount) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

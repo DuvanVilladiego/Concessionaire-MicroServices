@@ -1,0 +1,39 @@
+package com.formacionbdi.springboot.app.test.querylog.listeners;
+
+import org.springframework.stereotype.Component;
+
+import com.formacionbdi.springboot.app.test.querylog.utils.Constants;
+
+import jakarta.jms.Connection;
+import jakarta.jms.JMSException;
+import jakarta.jms.MessageConsumer;
+import jakarta.jms.Session;
+import jakarta.jms.TextMessage;
+import jakarta.jms.Topic;
+
+import org.apache.activemq.ActiveMQConnection;
+import org.apache.activemq.ActiveMQConnectionFactory;
+
+
+@Component
+public class MessageListener {
+    private static String BROKERURL = "tcp://localhost:61616";
+
+    public void main(TextMessage textMessage) throws JMSException {
+    	start();
+    }
+    
+    public static void start() throws JMSException {
+
+        ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory(
+        ActiveMQConnection.DEFAULT_USER, ActiveMQConnection.DEFAULT_PASSWORD, BROKERURL);
+        Connection connection = activeMQConnectionFactory.createConnection();
+        connection.start();
+        Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+        Topic topic = session.createTopic(Constants.CAR_QUEUE);
+        MessageConsumer consumer = session.createConsumer(topic);
+        TextMessage textMessage = (TextMessage) consumer.receive();
+        System.out.println(textMessage.getText());
+        connection.close();
+    }
+}

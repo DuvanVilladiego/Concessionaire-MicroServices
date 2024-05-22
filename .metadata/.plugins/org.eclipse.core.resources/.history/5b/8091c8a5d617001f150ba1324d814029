@@ -1,0 +1,5 @@
+package com.formacionbdi.springboot.app.test.car.service;
+
+public interface JmsService {
+	public static void sendMessage(String message);
+}

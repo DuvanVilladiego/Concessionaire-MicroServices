@@ -23,8 +23,8 @@ public class CarControllerImpl implements CarController {
 	@Autowired
 	private CarService carService;
 	
-	@GetMapping
 	@Override
+	@GetMapping
 	public ResponseDto<List<CarDto>> getAllCars() {
 		ResponseDto<List<CarDto>> response = new ResponseDto<List<CarDto>>();
 		try {
@@ -38,8 +38,8 @@ public class CarControllerImpl implements CarController {
 		return response;
 	}
 	
-	@GetMapping("/{id}")
 	@Override
+	@GetMapping("/{id}")
 	public ResponseDto<CarDto> getCarById(@PathVariable Long id) {
 		ResponseDto<CarDto> response = new ResponseDto<CarDto>();
 		try {

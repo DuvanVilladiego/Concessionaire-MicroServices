@@ -1,0 +1,10 @@
+package com.formacionbdi.springboot.app.test.concessionarie.controller.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="concessionaries")
+public class ConcessionarieEntity {
+
+}

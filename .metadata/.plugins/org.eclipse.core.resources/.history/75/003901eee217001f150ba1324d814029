@@ -1,0 +1,22 @@
+package com.formacionbdi.springboot.app.test.concessionarie.controller.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController("/api/concessionarie")
+public class ConcessionarieController {
+
+	
+	@GetMapping
+	public GeneralResponse<> getAllConcessionarie() {
+		
+	}
+	
+	@GetMapping("/{id}/cantidad/{cantidad}")
+	public GeneralResponse getConcessionarieById(@PathVariable Long id, @PathVariable Long cantidad) {
+		
+	}
+	
+}

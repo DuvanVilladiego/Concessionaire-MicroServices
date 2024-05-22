@@ -1,0 +1,29 @@
+package com.formacionbdi.springboot.app.test.concessionarie.controller.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.formacionbdi.springboot.app.test.concessionarie.controller.ConcessionarieController;
+import com.formacionbdi.springboot.app.test.concessionarie.dto.ConcessionarieDto;
+import com.formacionbdi.springboot.app.test.concessionarie.dto.ResponseDto;
+
+@RestController("/api/concessionarie")
+public class ConcessionarieControllerImpl implements ConcessionarieController {
+
+	@Autowired
+	@GetMapping
+	public ResponseDto<List<ConcessionarieDto>> getAllConcessionarie() {
+		
+	}
+	
+	@Autowired
+	@GetMapping("/{id}/cantidad/{cantidad}")
+	public ResponseDto<ConcessionarieDto> getConcessionarieById(@PathVariable Long id, @PathVariable Long cantidad) {
+		
+	}
+	
+}

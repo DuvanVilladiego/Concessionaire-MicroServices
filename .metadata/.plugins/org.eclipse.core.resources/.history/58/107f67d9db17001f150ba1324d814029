@@ -1,0 +1,14 @@
+spring.application.name=test-car
+server.port=8081
+
+#Base de datos
+spring.datasource.url=jdbc:postgresql://localhost:5433/cars
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.username=postgres
+spring.datasource.password=root
+spring.sql.init.continue-on-error=true
+
+#ActiveMq
+spring.activemq.broker-url=tcp//localhost:8161
+spring.activemq.user=admin
+spring.activemq.password=admin

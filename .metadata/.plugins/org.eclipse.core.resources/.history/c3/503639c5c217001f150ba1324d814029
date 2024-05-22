@@ -1,0 +1,29 @@
+package com.formacionbdi.springboot.app.test.car.controller.impl;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.formacionbdi.springboot.app.test.car.controller.CarController;
+import com.formacionbdi.springboot.app.test.car.dto.CarDto;
+import com.formacionbdi.springboot.app.test.car.dto.ResponseDto;
+import com.google.common.net.MediaType;
+
+@RestController
+@RequestMapping(value = "/api/cars", produces = MediaType.JSON_UTF_8)
+public class CarControllerImpl implements CarController {
+
+	@Override
+	public ResponseDto<List<CarDto>> getAllCars() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseDto<CarDto> getCarById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

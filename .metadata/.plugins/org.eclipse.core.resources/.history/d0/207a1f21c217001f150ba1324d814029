@@ -1,0 +1,10 @@
+package com.formacionbdi.springboot.app.test.car.controller;
+
+import com.formacionbdi.springboot.app.test.car.dto.CarDto;
+import com.formacionbdi.springboot.app.test.car.dto.ResponseDto;
+
+public interface CarController {
+	
+	public ResponseDto<CarDto> getAllCars();
+
+}

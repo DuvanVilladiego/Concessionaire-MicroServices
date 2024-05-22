@@ -1,0 +1,9 @@
+package com.formacionbdi.springboot.app.test.car.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.formacionbdi.springboot.app.test.car.models.CarEntity;
+
+public interface CarRepository extends JpaRepository<CarEntity, Long>{
+
+}
