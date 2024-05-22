@@ -67,9 +67,6 @@ spring.activemq.password=admin
 
 ## Notas Adicionales
 
-El repositorio incluye una coleccion de Postman para falicitar la prueba de los servicios `Concessionaire.postman_collection` .
-
-## Notas Adicionales
-
 - Asegúrate de que ActiveMQ esté corriendo antes de iniciar el Servicio de Mensajería.
 - Revisa los logs de cada servicio para verificar que se están comunicando correctamente.
+El repositorio incluye una coleccion de Postman para falicitar la prueba de los servicios `Concessionaire.postman_collection`.
