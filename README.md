@@ -56,13 +56,13 @@ spring.activemq.password=admin
 4. Ejecuta cada microservicio:
    ```sh
    # Servicio Car
-   java -jar springboot-test-car/target/independent-service.jar
+   java -jar springboot-test-car/target/springboot-test-car-0.0.1-SNAPSHOT.jar
 
    # Servicio Concesionarios
-   java -jar springboot-test-concessionarie/target/consumer-service.jar
+   java -jar springboot-test-concessionarie/target/springboot-test-concessionarie-0.0.1-SNAPSHOT.jar
 
    # Servicio de Mensajería
-   java -jar springboot-test-query-log/target/messaging-service.jar
+   java -jar springboot-test-query-log/target/springboot-test-query-log-0.0.1-SNAPSHOT.jar
    ```
 
 ## Notas Adicionales
