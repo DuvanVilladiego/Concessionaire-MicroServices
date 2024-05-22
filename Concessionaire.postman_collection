@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "b5f2adc3-a610-4aa5-9763-9399e91ce022",
+		"name": "Vehiculos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15167700"
+	},
+	"item": [
+		{
+			"name": "Concesionario con vehiculos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/api/concessionaires/3/cantidad/10",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"concessionaires",
+						"3",
+						"cantidad",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Concesionarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/api/concessionaires",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"concessionaires"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vehiculos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/cars",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vehiculos por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/cars/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"cars",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
