@@ -42,18 +42,23 @@ spring.activemq.password=admin
    ```sh
    git clone https://github.com/DuvanVilladiego/Concessionaire-MicroServices.git
    ```
-
 2. Navega al directorio del proyecto:
    ```sh
    cd concessionaire-microservices
    ```
+   
+3. Ejecuta el sql en tu base de datos(cars):
 
-3. Compila y empaqueta los microservicios con Maven:
+   ```sh
+   psql -U root -d cars -f Concessionaire.sql
+   ```
+
+4. Compila y empaqueta los microservicios con Maven:
    ```sh
    mvn clean install
    ```
 
-4. Ejecuta cada microservicio:
+5. Ejecuta cada microservicio:
    ```sh
    # Servicio Car
    java -jar springboot-test-car/target/springboot-test-car-0.0.1-SNAPSHOT.jar
