@@ -1,63 +1,71 @@
-Concessionaire-Microservices
+# Concessionaire-Microservices
+
 Este proyecto utiliza Java 17 con Spring Boot 3.2.5 y está compuesto por tres microservicios:
 
-Servicio Independiente: Un microservicio autónomo que realiza sus propias tareas.
-Servicio Consumidor: Un microservicio que consume el Servicio Independiente a través de HTTP.
-Servicio de Mensajería: Un microservicio que recibe y gestiona el estado de las peticiones de los dos servicios anteriores mediante ActiveMQ.
-Requisitos
-Java 17
-Maven
-ActiveMQ
-Configuración
-Para la correcta configuración del servicio, se recomienda usar las configuraciones establecidas en los archivos application.properties de cada componente.
+1. **Servicio Car**: Un microservicio autónomo que realiza sus propias tareas.
+2. **Servicio Concessionaire**: Un microservicio que consume el Servicio Car a través de HTTP.
+3. **Servicio de Mensajería (query-logs)**: Un microservicio que recibe y gestiona el estado de las peticiones de los dos servicios anteriores mediante ActiveMQ.
 
-Servicio Independiente
-Este microservicio funciona de forma autónoma y no requiere configuraciones adicionales para comunicarse con otros servicios.
+## Requisitos
 
-Servicio Consumidor
-Este microservicio realiza llamadas HTTP al Servicio Independiente. Asegúrate de configurar la URL del Servicio Independiente en el application.properties del Servicio Consumidor:
+- Java 17
+- Maven
+- ActiveMQ
+- Postgres
 
-properties
-Copy code
-# Ejemplo de configuración
-service.independent.url=http://localhost:8080/api/independent
-Servicio de Mensajería
-Este microservicio utiliza ActiveMQ para recibir mensajes sobre el estado de las peticiones. Configura las propiedades de ActiveMQ en el application.properties:
+## Configuración
 
-properties
-Copy code
+Para la correcta configuración del servicio, se recomienda usar las configuraciones establecidas en los archivos `application.properties` de cada componente.
+
+### Servicio Car
+
+Este microservicio funciona de forma autónoma y no requiere configuraciones adicionales.
+
+### Servicio Concessionaire
+
+Este microservicio realiza llamadas HTTP al Servicio Car.
+
+### Servicio de Mensajería (query-logs)
+
+Este microservicio utiliza ActiveMQ para recibir mensajes sobre el estado de las peticiones. Configura las propiedades de ActiveMQ en el `application.properties`:
+
+```properties
 # Ejemplo de configuración
 spring.activemq.broker-url=tcp://localhost:61616
 spring.activemq.user=admin
 spring.activemq.password=admin
-Ejecución
-Clona el repositorio:
+```
 
-sh
-Copy code
-git clone https://github.com/tu_usuario/concessionaire-microservices.git
-Navega al directorio del proyecto:
+## Ejecución
 
-sh
-Copy code
-cd concessionaire-microservices
-Compila y empaqueta los microservicios con Maven:
+1. Clona el repositorio:
+   ```sh
+   git clone https://github.com/DuvanVilladiego/Concessionaire-MicroServices.git
+   ```
 
-sh
-Copy code
-mvn clean install
-Ejecuta cada microservicio:
+2. Navega al directorio del proyecto:
+   ```sh
+   cd concessionaire-microservices
+   ```
 
-sh
-Copy code
-# Servicio Independiente
-java -jar independent-service/target/independent-service.jar
+3. Compila y empaqueta los microservicios con Maven:
+   ```sh
+   mvn clean install
+   ```
 
-# Servicio Consumidor
-java -jar consumer-service/target/consumer-service.jar
+4. Ejecuta cada microservicio:
+   ```sh
+   # Servicio Car
+   java -jar springboot-test-car/target/independent-service.jar
 
-# Servicio de Mensajería
-java -jar messaging-service/target/messaging-service.jar
-Notas Adicionales
-Asegúrate de que ActiveMQ esté corriendo antes de iniciar el Servicio de Mensajería.
-Revisa los logs de cada servicio para verificar que se están comunicando correctamente.
+   # Servicio Concesionarios
+   java -jar springboot-test-concessionarie/target/consumer-service.jar
+
+   # Servicio de Mensajería
+   java -jar springboot-test-query-log/target/messaging-service.jar
+   ```
+
+## Notas Adicionales
+
+- Asegúrate de que ActiveMQ esté corriendo antes de iniciar el Servicio de Mensajería.
+- Revisa los logs de cada servicio para verificar que se están comunicando correctamente.
