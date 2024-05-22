@@ -48,6 +48,7 @@ public class ConcessionarieControllerImpl implements ConcessionarieController {
 			response.setStatus(true);
 			response.setMessage(Constants.SUCCES_QUERY);
 		} catch (Exception e) {
+			e.printStackTrace();
 			response.setStatus(false);
 			response.setMessage(Constants.ERROR_QUERY);
 		}

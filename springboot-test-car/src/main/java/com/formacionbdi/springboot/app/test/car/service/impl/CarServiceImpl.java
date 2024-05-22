@@ -33,7 +33,7 @@ public class CarServiceImpl implements CarService {
 	    } catch (Exception e) {
 	    	e.printStackTrace();
 	    	System.out.println();
-	        jmsService.sendMessage(Constants.CAR_QUEUE, Constants.ERROR_QUERY);
+	        jmsService.sendMessage(Constants.CAR_QUEUE, String.format("%s : %s", Constants.ERROR_QUERY, e.getCause()));         
 	    }
 		return response;
 	}
@@ -45,7 +45,7 @@ public class CarServiceImpl implements CarService {
 			response = new CarDto().EntityToDto(repository.findById(id).get());
 			jmsService.sendMessage(Constants.CAR_QUEUE, Constants.SUCCES_QUERY);
 		} catch (Exception e) {
-			jmsService.sendMessage(Constants.CAR_QUEUE, Constants.ERROR_QUERY);			
+	        jmsService.sendMessage(Constants.CAR_QUEUE, String.format("%s : %s", Constants.ERROR_QUERY, e.getCause()));         
 		}
 		return response;
 	}
