@@ -4,7 +4,7 @@ Este proyecto utiliza Java 17 con Spring Boot 3.2.5 y está compuesto por tres m
 
 1. **Servicio Car**: Un microservicio autónomo que realiza sus propias tareas.
 2. **Servicio Concessionaire**: Un microservicio que consume el Servicio Car a través de HTTP.
-3. **Servicio de Mensajería (query-logs)**: Un microservicio que recibe y gestiona el estado de las peticiones de los dos servicios anteriores mediante ActiveMQ.
+3. **Servicio de Mensajería (query-logs)**: Un microservicio que recibe y muestra por consola el estado de las peticiones de los dos servicios anteriores mediante ActiveMQ.
 
 ## Requisitos
 
@@ -27,7 +27,7 @@ Este microservicio realiza llamadas HTTP al Servicio Car.
 
 ### Servicio de Mensajería (query-logs)
 
-Este microservicio utiliza ActiveMQ para recibir mensajes sobre el estado de las peticiones. Configura las propiedades de ActiveMQ en el `application.properties`:
+Este microservicio utiliza ActiveMQ para recibir mensajes sobre el estado de las peticiones y las muestra en consola. Configura las propiedades de ActiveMQ en el `application.properties`:
 
 ```properties
 # Ejemplo de configuración
