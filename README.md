@@ -4,14 +4,16 @@ Este proyecto utiliza Java 17 con Spring Boot 3.2.5 y está compuesto por tres m
 
 1. **Servicio Car**: Un microservicio autónomo que realiza sus propias tareas.
 2. **Servicio Concessionaire**: Un microservicio que consume el Servicio Car a través de HTTP.
-3. **Servicio de Mensajería (query-logs)**: Un microservicio que recibe y muestra por consola el estado de las peticiones de los dos servicios anteriores mediante ActiveMQ.
+3. **Servicio de Mensajería (query-logs)**: Un microservicio que recibe y registra en consola las transacciones de los servicios anteriores mediante ActiveMQ.
 
 ## Requisitos
 
 - Java 17
+- Springboot
 - Maven
 - ActiveMQ
 - Postgres
+- MongoDb
 
 ## Configuración
 
@@ -74,4 +76,4 @@ spring.activemq.password=admin
 
 - Asegúrate de que ActiveMQ esté corriendo antes de iniciar el Servicio de Mensajería.
 - Revisa los logs de cada servicio para verificar que se están comunicando correctamente.
-El repositorio incluye una coleccion de Postman para falicitar la prueba de los servicios `Concessionaire.postman_collection`.
+- El repositorio incluye una coleccion de Postman para falicitar la prueba de los servicios `Concessionaire.postman_collection`.
