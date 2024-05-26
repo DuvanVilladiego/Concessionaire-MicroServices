@@ -7,6 +7,6 @@ import com.formacionbdi.springboot.app.test.concessionarie.dto.ConcessionarieWit
 
 public interface ConcessionarieService {
 
-	List<ConcessionarieDto> getAll();
-	ConcessionarieWithCarsDto getById(Long id, Long amount);
+	List<ConcessionarieDto> getAll(String UUID, String serviceName);
+	ConcessionarieWithCarsDto getById(Long id, Long amount, String UUID, String serviceName);
 }

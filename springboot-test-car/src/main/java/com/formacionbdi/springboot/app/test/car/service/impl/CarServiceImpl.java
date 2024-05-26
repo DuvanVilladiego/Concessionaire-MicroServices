@@ -23,29 +23,31 @@ public class CarServiceImpl implements CarService {
 	private JmsService jmsService;
 	
 	@Override
-	public List<CarDto> getAll() {
+	public List<CarDto> getAll(String UUID, String serviceName) {
 		List<CarDto> response =  new ArrayList<CarDto>();
 		try {
 	        response = repository.findAll().stream()
 	            .map(p -> new CarDto().EntityToDto(p))
 	            .collect(Collectors.toList());
-	        jmsService.sendMessage(Constants.CAR_QUEUE, Constants.SUCCES_QUERY);
+	        jmsService.sendMessage(Constants.AUDITORY_QUEUE, serviceName, true, Constants.SUCCES_QUERY, null, UUID);
 	    } catch (Exception e) {
-	    	e.printStackTrace();
-	    	System.out.println();
-	        jmsService.sendMessage(Constants.CAR_QUEUE, String.format("%s : %s", Constants.ERROR_QUERY, e.getCause()));         
+	        jmsService.sendMessage(Constants.AUDITORY_QUEUE, serviceName, false, Constants.ERROR_QUERY, e.getMessage(), UUID);         
 	    }
 		return response;
 	}
 
 	@Override
-	public CarDto getCarById(Long id) {
+	public CarDto getCarById(Long id, String UUID, String serviceName) {
 		CarDto response = new CarDto();		
 		try {
 			response = new CarDto().EntityToDto(repository.findById(id).get());
-			jmsService.sendMessage(Constants.CAR_QUEUE, Constants.SUCCES_QUERY);
+			if (response != null) {
+		        jmsService.sendMessage(Constants.AUDITORY_QUEUE, serviceName, true, Constants.SUCCES_QUERY, null, UUID);
+			} else {
+		        jmsService.sendMessage(Constants.AUDITORY_QUEUE, serviceName, false, Constants.ERROR_QUERY, Constants.NOT_FOUND_CAR, UUID);         
+			}
 		} catch (Exception e) {
-	        jmsService.sendMessage(Constants.CAR_QUEUE, String.format("%s : %s", Constants.ERROR_QUERY, e.getCause()));         
+	        jmsService.sendMessage(Constants.AUDITORY_QUEUE, serviceName, false, Constants.ERROR_QUERY, e.getMessage(), UUID);         
 		}
 		return response;
 	}

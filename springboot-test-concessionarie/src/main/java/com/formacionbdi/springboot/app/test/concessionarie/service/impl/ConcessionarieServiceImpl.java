@@ -36,23 +36,21 @@ public class ConcessionarieServiceImpl implements ConcessionarieService {
 	private JmsService jmsService;
 	
 	@Override
-	public List<ConcessionarieDto> getAll() {
+	public List<ConcessionarieDto> getAll(String UUID, String serviceName) {
 		List<ConcessionarieDto> response =  new ArrayList<ConcessionarieDto>();
 		try {
 	        response = repository.findAll().stream()
 	            .map(p -> new ConcessionarieDto().EntityToDto(p))
 	            .collect(Collectors.toList());
-	        jmsService.sendMessage(Constants.CONCESSIONARIE_QUEUE, Constants.SUCCES_QUERY);
+	        jmsService.sendMessage(Constants.AUDITORY_QUEUE, serviceName, true, Constants.SUCCES_QUERY, null, UUID);
 	    } catch (Exception e) {
-	    	e.printStackTrace();
-	    	System.out.println();
-	        jmsService.sendMessage(Constants.CONCESSIONARIE_QUEUE, String.format("%s : %s", Constants.ERROR_QUERY, e.getCause()));         
+	        jmsService.sendMessage(Constants.AUDITORY_QUEUE, serviceName, false, Constants.ERROR_QUERY, e.getMessage(), UUID);         
 	    }
 		return response;
 	}
 
 	@Override
-	public ConcessionarieWithCarsDto getById(Long id, Long amount) {
+	public ConcessionarieWithCarsDto getById(Long id, Long amount, String UUID, String serviceName) {
 	    ConcessionarieWithCarsDto response = new ConcessionarieWithCarsDto();      
 	    try {
 	        ResponseEntity<ResponseDto<List<CarDto>>> responseEntity = clienteRest.exchange(
@@ -71,11 +69,9 @@ public class ConcessionarieServiceImpl implements ConcessionarieService {
 	            ConcessionarieEntity entity = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Concessionarie not found"));
 	            response = new ConcessionarieWithCarsDto().EntityToDto(entity, limitedCars);
 	        }
-
-	        jmsService.sendMessage(Constants.CONCESSIONARIE_QUEUE, Constants.SUCCES_QUERY);
+	        jmsService.sendMessage(Constants.AUDITORY_QUEUE, serviceName, true, Constants.SUCCES_QUERY, null, UUID);
 	    } catch (Exception e) {
-	    	e.printStackTrace();
-	        jmsService.sendMessage(Constants.CONCESSIONARIE_QUEUE, String.format("%s : %s", Constants.ERROR_QUERY, e.getCause()));         
+	        jmsService.sendMessage(Constants.AUDITORY_QUEUE, serviceName, false, Constants.ERROR_QUERY, e.getMessage(), UUID);             
 	    }
 	    return response;
 	}
