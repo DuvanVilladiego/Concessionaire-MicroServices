@@ -1,4 +1,4 @@
-package com.formacionbdi.springboot.app.test.car.controller.model;
+package com.formacionbdi.springboot.app.test.concessionarie.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,16 +8,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="cars")
-public class CarEntity {
-	
+@Table(name="concessionaries")
+public class ConcessionarieEntity {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(nullable = false)
 	private String nombre;
-	@Column(nullable = false)
-	private Double precio;
 	
 	public Long getId() {
 		return id;
@@ -25,17 +23,11 @@ public class CarEntity {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getName() {
+	public String getNombre() {
 		return nombre;
 	}
-	public void setName(String name) {
-		this.nombre = name;
-	}
-	public Double getPrecio() {
-		return precio;
-	}
-	public void setPrecio(Double precio) {
-		this.precio = precio;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
 }

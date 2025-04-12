@@ -11,12 +11,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.formacionbdi.springboot.app.test.concessionarie.controller.model.ConcessionarieEntity;
-import com.formacionbdi.springboot.app.test.concessionarie.controller.model.repository.ConcessionarieRepository;
 import com.formacionbdi.springboot.app.test.concessionarie.dto.CarDto;
 import com.formacionbdi.springboot.app.test.concessionarie.dto.ConcessionarieDto;
 import com.formacionbdi.springboot.app.test.concessionarie.dto.ConcessionarieWithCarsDto;
 import com.formacionbdi.springboot.app.test.concessionarie.dto.ResponseDto;
+import com.formacionbdi.springboot.app.test.concessionarie.model.ConcessionarieEntity;
+import com.formacionbdi.springboot.app.test.concessionarie.model.repository.ConcessionarieRepository;
 import com.formacionbdi.springboot.app.test.concessionarie.service.ConcessionarieService;
 import com.formacionbdi.springboot.app.test.concessionarie.service.JmsService;
 import com.formacionbdi.springboot.app.test.concessionarie.util.Constants;

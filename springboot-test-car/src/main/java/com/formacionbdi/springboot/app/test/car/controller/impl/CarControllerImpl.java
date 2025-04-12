@@ -28,8 +28,9 @@ public class CarControllerImpl implements CarController {
 	@GetMapping
 	public ResponseDto<List<CarDto>> getAllCars() {
 		RequestTransactionDto request = new RequestTransactionDto(Constants.GET_ALL);
+	    String uuid = request.getRequestId();
 		ResponseDto<List<CarDto>> response = new ResponseDto<List<CarDto>>();
-		response.setUUID(request.getRequestId());
+		response.setUUID(uuid);
 		try {
 			response.setData(carService.getAll(request.getRequestId(), Constants.GET_ALL));
 			response.setStatus(true);
@@ -45,8 +46,9 @@ public class CarControllerImpl implements CarController {
 	@GetMapping("/{id}")
 	public ResponseDto<CarDto> getCarById(@PathVariable Long id) {
 		RequestTransactionDto request = new RequestTransactionDto(Constants.GET_BY_ID);
+	    String uuid = request.getRequestId();
 		ResponseDto<CarDto> response = new ResponseDto<CarDto>();
-		response.setUUID(request.getRequestId());
+		response.setUUID(uuid);
 		try {
 			CarDto car = carService.getCarById(id, request.getRequestId(), Constants.GET_BY_ID);
 			if (car.getId()!=null) {
