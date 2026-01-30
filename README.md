@@ -1,79 +1,85 @@
 # Concessionaire-Microservices
 
-Este proyecto utiliza Java 17 con Spring Boot 3.2.5 y está compuesto por tres microservicios:
+This project uses Java 17 with Spring Boot 3.2.5 and is composed of three microservices:
 
-1. **Servicio Car**: Un microservicio autónomo que realiza sus propias tareas.
-2. **Servicio Concessionaire**: Un microservicio que consume el Servicio Car a través de HTTP.
-3. **Servicio de Mensajería (query-logs)**: Un microservicio que recibe y registra en consola las transacciones de los servicios anteriores mediante ActiveMQ.
+1. **Car Service**: A standalone microservice that performs its own tasks independently.
+2. **Concessionaire Service**: A microservice that consumes the Car Service via HTTP.
+3. **Messaging Service (query-logs)**: A microservice that receives transactions from the previous services and logs them to the console using ActiveMQ.
 
-## Requisitos
+## Requirements
 
-- Java 17
-- Springboot
-- Maven
-- ActiveMQ
-- Postgres
-- MongoDb
+* Java 17
+* Spring Boot
+* Maven
+* ActiveMQ
+* PostgreSQL
+* MongoDB
 
-## Configuración
+## Configuration
 
-Para la correcta configuración del servicio, se recomienda usar las configuraciones establecidas en los archivos `application.properties` de cada componente.
+For proper service configuration, it is recommended to use the settings defined in the `application.properties` files of each component.
 
-### Servicio Car
+### Car Service
 
-Este microservicio funciona de forma autónoma y no requiere configuraciones adicionales.
+This microservice runs independently and does not require additional configuration.
 
-### Servicio Concessionaire
+### Concessionaire Service
 
-Este microservicio realiza llamadas HTTP al Servicio Car.
+This microservice makes HTTP calls to the Car Service.
 
-### Servicio de Mensajería (query-logs)
+### Messaging Service (query-logs)
 
-Este microservicio utiliza ActiveMQ para recibir mensajes sobre el estado de las peticiones y las muestra en consola. Configura las propiedades de ActiveMQ en el `application.properties`:
+This microservice uses ActiveMQ to receive messages about request statuses and displays them in the console. Configure the ActiveMQ properties in `application.properties`:
 
 ```properties
-# Ejemplo de configuración
+# Configuration example
 spring.activemq.broker-url=tcp://localhost:61616
 spring.activemq.user=admin
 spring.activemq.password=admin
 ```
 
-## Ejecución
+## Execution
 
-1. Clona el repositorio:
+1. Clone the repository:
+
    ```sh
    git clone https://github.com/DuvanVilladiego/Concessionaire-MicroServices.git
    ```
-2. Navega al directorio del proyecto:
+
+2. Navigate to the project directory:
+
    ```sh
    cd concessionaire-microservices
    ```
-   
-3. Ejecuta el sql en tu base de datos(cars):
+
+3. Run the SQL script in your database (cars):
 
    ```sh
    psql -U root -d cars -f Concessionaire.sql
    ```
 
-4. Compila y empaqueta los microservicios con Maven:
+4. Build and package the microservices with Maven:
+
    ```sh
    mvn clean install
    ```
 
-5. Ejecuta cada microservicio:
+5. Run each microservice:
+
    ```sh
-   # Servicio Car
+   # Car Service
    java -jar springboot-test-car/target/springboot-test-car-0.0.1-SNAPSHOT.jar
 
-   # Servicio Concesionarios
+   # Concessionaire Service
    java -jar springboot-test-concessionarie/target/springboot-test-concessionarie-0.0.1-SNAPSHOT.jar
 
-   # Servicio de Mensajería
+   # Messaging Service
    java -jar springboot-test-query-log/target/springboot-test-query-log-0.0.1-SNAPSHOT.jar
    ```
 
-## Notas Adicionales
+## Additional Notes
 
-- Asegúrate de que ActiveMQ esté corriendo antes de iniciar el Servicio de Mensajería.
-- Revisa los logs de cada servicio para verificar que se están comunicando correctamente.
-- El repositorio incluye una coleccion de Postman para falicitar la prueba de los servicios `Concessionaire.postman_collection`.
+* Make sure ActiveMQ is running before starting the Messaging Service.
+* Check the logs of each service to verify that they are communicating correctly.
+* The repository includes a Postman collection to facilitate service testing:
+  `Concessionaire.postman_collection`
